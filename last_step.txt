@@ -1,6 +1,7 @@
-url: https://youtu.be/NAOsLaB6Lfc?t=12302
-time: 3:25:25
+url: https://youtu.be/NAOsLaB6Lfc?t=15614
+time: 4:20:14
 github: https://github.com/codingforentrepreneurs/Django-Kubernetes/tree/main
 digitalOcean: ready Kubernates cluster
 
 migrate.sh is propably not correct
+cluster name is not correct
