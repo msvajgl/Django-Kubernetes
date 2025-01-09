@@ -41,6 +41,7 @@ jobs:
             doctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{ env.CLUSTER_NAME }}
     -   name: Update deployment secrets
         run: |
+            kubectl delete secret django-k8s-web-prod-env
             cat << EOF >> web/.env.prod
             DJANGO_SUPERUSER_USERNAME=${{ secrets.DJANGO_SUPERUSER_USERNAME }}
             DJANGO_SUPERUSER_PASSWORD=${{ secrets.DJANGO_SUPERUSER_PASSWORD }}
@@ -54,7 +55,6 @@ jobs:
             POSTGRES_HOST=${{ secrets.POSTGRES_HOST }}
             POSTGRES_PORT=${{ secrets.POSTGRES_PORT }}
             EOF
-            kubectl delete secret django-k8s-web-prod-env
             kubectl create secret generic django-k8s-web-prod-env --from-env-file=web/.env.prod
     -   name: Update Deployment image
         run: |
